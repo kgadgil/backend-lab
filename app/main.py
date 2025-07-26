@@ -13,9 +13,6 @@ class NoteCreate(BaseModel):
 	username:str
 	note: str
 
-	def __repr__(self):
-	    return f"<Note(id={self.id}, username='{self.username}', note='{self.note[:20]}')>"
-
 def get_db():
 	db = SessionLocal()
 	try:
@@ -54,4 +51,3 @@ def get_notes(username: str, db: Session = Depends(get_db)):
 	if not notes: 
 		raise HTTPException(status_code=404, detail="User not found")
 	return {"username":username, "notes": [n.note for n in notes]}
-
