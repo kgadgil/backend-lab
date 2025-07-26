@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  web:
+    # tells Docker to build the image from the Dockerfile in the current directory.
+    build: .
+    # maps port 8000 on the host to 8000 in the container
+    ports:
+      - "8080:8080"
+    # mounts your local ./app directory into the container.
+    volumes:
+      - ./app:/app/app
+
