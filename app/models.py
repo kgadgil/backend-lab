@@ -9,7 +9,7 @@ Base = declarative_base()
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-class Note(Base):
+class NotaBene(Base):
 	__tablename__ = "notes"
 
 	## All ORM mapped classes require at least one column be declared as part of the primary key

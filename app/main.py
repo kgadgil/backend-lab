@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 ## Local imports
-from app.models import Base, engine, SessionLocal, Note
+from app.models import Base, engine, SessionLocal, NotaBene
 
 Base.metadata.create_all(bind=engine)
 
@@ -39,7 +39,7 @@ def get_db():
 ## Decorators are functions that wrap other functions
 @app.post("/notes")
 def add_note(note: NoteCreate, db: Session = Depends(get_db)):
-	db_note = Note(username = note.username, note = note.note)
+	db_note = NotaBene(username = note.username, note = note.note)
 	db.add(db_note)
 	db.commit()
 	db.refresh(db_note)
@@ -47,7 +47,7 @@ def add_note(note: NoteCreate, db: Session = Depends(get_db)):
 
 @app.get("/notes/{username}")
 def get_notes(username: str, db: Session = Depends(get_db)):
-	notes = db.query(Note).filter(Note.username == username).all()
+	notes = db.query(NotaBene).filter(NotaBene.username == username).all()
 	if not notes: 
 		raise HTTPException(status_code=404, detail="User not found")
 	return {"username":username, "notes": [n.note for n in notes]}
