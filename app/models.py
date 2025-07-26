@@ -9,6 +9,15 @@ Base = declarative_base()
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+class User(Base):
+	__tablename__ = "users"
+
+	# Using index=True for primary_key=True is redundant
+	id = Column(Integer, primary_key=True)
+	username = Column(String, unique=True, index=True)
+	hashed_password = Column(String)
+
+
 class NotaBene(Base):
 	__tablename__ = "notes"
 

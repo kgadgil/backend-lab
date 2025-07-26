@@ -64,3 +64,4 @@ sqlite> notes
 sqlite> SELECT * from notes;
 1|kgadgil|Hello World
 2|kgadgil|Initial Commit
+
