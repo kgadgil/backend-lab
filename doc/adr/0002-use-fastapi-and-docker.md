@@ -13,10 +13,6 @@ Building a simple notes app using FastAPI and Docker. Everyone is using this sta
 ## Decision
 
 * Start a virtual environment
-	python3 -m venv .venv
-	pip3 install fastapi
-	pip freeze > requirements.txt
-
 * Use FastAPI to implement two endpoints: POST and GET. 
 * Dockerize the application for further use. Add Docker compose
 * Use local file storage for the first iteration
