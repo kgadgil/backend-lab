@@ -24,3 +24,15 @@ git add . stages new files and modifications, without deletions (on the current 
 git add -u stages modifications and deletions, without new files
 
 echo "app/__pycache__/"$'\n' >> .gitignore
+
+A database index is a data structure (often a B-tree) that improves the speed of queries on a table — especially for:
+
+    WHERE filters
+
+    ORDER BY clauses
+
+    Joins
+
+For example, this query will be faster if username is indexed:
+
+SELECT * FROM notes WHERE username = 'alice';
