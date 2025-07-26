@@ -65,3 +65,17 @@ sqlite> SELECT * from notes;
 1|kgadgil|Hello World
 2|kgadgil|Initial Commit
 
+## Simulate heavy-load
+
+```
+hey -n 10000 -c 100 \
+	-m POST \
+	-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrZ2FkZ2lsIiwiZXhwIjoxNzUzNTYyNjExfQ.mnvDzvZa3A6gfx-Kb7VKRre_c2kHMo0wsp3IsJ-gLXo" \
+	-H "Content-Type: application/json" \
+	-d '{"note":"test"}' \
+	http://localhost:8080/notes
+```
+When i run GET i get the following error 
+
+  raise exc.TimeoutError(
+sqlalchemy.exc.TimeoutError: QueuePool limit of size 5 overflow 10 reached, connection timed out, timeout 30.00 (Background on this error at: https://sqlalche.me/e/20/3o7r)
