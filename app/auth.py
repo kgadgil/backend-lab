@@ -2,9 +2,15 @@ from passlib.context import CryptContext
 from jose import JWTError, jwt
 from datetime import datetime, timedelta, timezone
 
-SECRET_KEY = "your_secret_key"
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Get secrets from environment variables with fallbacks
+SECRET_KEY = os.getenv("SECRET_KEY", "your_secret_key")
 ALGORITHM = 'HS256'
-ACCESS_TOKEN_EXPIRE_MIN = 30
+ACCESS_TOKEN_EXPIRE_MIN = int(os.getenv("ACCESS_TOKEN_EXPIRE_MIN", "30"))
 
 ## https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/#hash-and-verify-the-passwords
 

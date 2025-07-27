@@ -79,3 +79,5 @@ When i run GET i get the following error
 
   raise exc.TimeoutError(
 sqlalchemy.exc.TimeoutError: QueuePool limit of size 5 overflow 10 reached, connection timed out, timeout 30.00 (Background on this error at: https://sqlalche.me/e/20/3o7r)
+
+`curl -X POST "http://localhost:8080/register" -H "Content-Type: application/json" -d '{"username": "envtest", "password": "testpass"}' -s`
